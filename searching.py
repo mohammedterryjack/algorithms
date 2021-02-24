@@ -16,10 +16,10 @@ def index(values:List[int], target_value:int) -> int:
 
 def binary_search(ordered_indexed_values:List[Tuple[int,int]], target_value:int) -> int:
     if not any(ordered_indexed_values): return -1
-    mid_index = len(ordered_indexed_values)//2
-    index,value = ordered_indexed_values[mid_index]
+    middle_index = len(ordered_indexed_values)//2
+    index,value = ordered_indexed_values[middle_index]
     if target_value==value: 
         return index
     if target_value < value: 
-        return binary_search(ordered_indexed_values[:mid_index],target_value)
-    return binary_search(ordered_indexed_values[mid_index+1:],target_value)
+        return binary_search(ordered_indexed_values[:middle_index],target_value)
+    return binary_search(ordered_indexed_values[middle_index+1:],target_value)
