@@ -1,15 +1,25 @@
-from typing import List
+from typing import List, Tuple
 
-def binary_search(values:List[int], target_value:int, start_index:int, end_index:int) -> int:
+
+def index(values:List[int], target_value:int) -> int:
     """
     finds index of target_value using recursive binary search
     if target_value is not in set of values, returns -1
     """
-    index_range = end_index - start_index
-    if index_range <= 0: return -1
-    mid_index = index_range//2
-    split_index = start_index + mid_index 
-    return split_index if values[split_index] == target_value else max(
-        binary_search(values,target_value,start_index,split_index),
-        binary_search(values,target_value,split_index+1,end_index)
-    ) 
+    return binary_search(
+        ordered_indexed_values = sorted(
+            enumerate(values),
+            key=lambda index_value_pair:index_value_pair[-1]
+        ),
+        target_value=target_value
+    )
+
+def binary_search(ordered_indexed_values:List[Tuple[int,int]], target_value:int) -> int:
+    if not any(ordered_indexed_values): return -1
+    mid_index = len(ordered_indexed_values)//2
+    index,value = ordered_indexed_values[mid_index]
+    if target_value==value: 
+        return index
+    if target_value < value: 
+        return binary_search(ordered_indexed_values[:mid_index],target_value)
+    return binary_search(ordered_indexed_values[mid_index+1:],target_value)
