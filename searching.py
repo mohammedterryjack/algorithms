@@ -23,9 +23,9 @@ def binary_search(ordered_indexed_values:List[Tuple[int,int]], target_value:int)
     if target_value==value: 
         return index
     return binary_search(
-        ordered_index_values=ordered_indexed_values[:middle_index],
+        ordered_indexed_values=ordered_indexed_values[:middle_index],
         target_value=target_value
     ) if target_value < value else binary_search(
-        ordered_index_values=ordered_indexed_values[middle_index+1:],
+        ordered_indexed_values=ordered_indexed_values[middle_index+1:],
         target_value=target_value
     )
