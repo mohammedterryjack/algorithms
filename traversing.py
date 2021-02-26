@@ -1,6 +1,6 @@
 from typing import List,Dict,Set
 
-def breadth_first_traversal(
+def breadth_first(
     graph:Dict[str,List[str]], 
     nodes_queue:List[str], 
     seen:Set[str]
@@ -12,9 +12,9 @@ def breadth_first_traversal(
         connected_nodes = graph.get(node)
         nodes_queue += connected_nodes
         seen.add(node)
-    breadth_first_traversal(graph,nodes_queue,seen)
+    breadth_first(graph,nodes_queue,seen)
 
-def depth_first_traversal(
+def depth_first(
     graph:Dict[str,List[str]], 
     nodes_queue:List[str], 
     seen:Set[str]
@@ -26,7 +26,7 @@ def depth_first_traversal(
         connected_nodes = graph.get(node)
         nodes_queue += connected_nodes
         seen.add(node)
-    depth_first_traversal(graph,nodes_queue,seen)
+    depth_first(graph,nodes_queue,seen)
     
 #example_graph = {
 #  'A' : ['B','C'],
@@ -36,5 +36,5 @@ def depth_first_traversal(
 #  'E' : ['F'],
 #  'F' : []
 #}
-#breadth_first_traversal(example_graph,["A"],set())
-#depth_first_traversal(example_graph,["A"],set())
+#breadth_first(example_graph,["A"],set())
+#depth_first(example_graph,["A"],set())
