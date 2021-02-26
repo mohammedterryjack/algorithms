@@ -35,10 +35,11 @@ def a_star(
     scoring_function:callable
 ) -> None:
     if not any(nodes_queue): return 
+    nodes_queue.sort(key=scoring_function)
     node = nodes_queue.pop()
     if node not in seen: 
         print(node)
-        connected_nodes = list(sorted(graph.get(node),key=scoring_function))
+        connected_nodes = graph.get(node)
         nodes_queue += connected_nodes
         seen.add(node)
     a_star(graph,nodes_queue,seen,scoring_function)
