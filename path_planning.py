@@ -37,10 +37,9 @@ def breadth_first(
 ) -> None:
     if not any(nodes_queue): return 
     node = nodes_queue.pop(0)
-    if node == goal:
-        print(node.path_weight(),node.path_name())
-        return
+    if node == goal:return
     if node not in seen: 
+        print(node)
         connected_nodes = graph.get(node)
         node.update_path(connected_nodes)
         nodes_queue += connected_nodes
@@ -55,10 +54,9 @@ def depth_first(
 ) -> None:
     if not any(nodes_queue): return
     node = nodes_queue.pop()
-    if node == goal:
-        print(node.path_weight(),node.path_name())
-        return
+    if node == goal: return
     if node not in seen:
+        print(node)
         connected_nodes = graph.get(node)
         node.update_path(connected_nodes)
         nodes_queue += connected_nodes
@@ -75,10 +73,9 @@ def a_star(
     if not any(nodes_queue): return 
     nodes_queue.sort(key=lambda node:node.path_weight() + node.distance(goal))
     node = nodes_queue.pop()
-    if node == goal:
-        print(node.path_weight(),node.path_name())
-        return
+    if node == goal: return
     if node not in seen: 
+        print(node)
         connected_nodes = graph.get(node)
         node.update_path(connected_nodes)
         nodes_queue += connected_nodes
@@ -102,5 +99,6 @@ example_graph = {
 }
 
 #breadth_first(graph=example_graph,nodes_queue=[A],seen=set(),goal=F)
-#depth_first(graph=example_graph,nodes_queue=[A],seen=set(),goal=F)
-a_star(graph=example_graph,nodes_queue=[A],seen=set(),goal=F)
+depth_first(graph=example_graph,nodes_queue=[A],seen=set(),goal=F)
+#a_star(graph=example_graph,nodes_queue=[A],seen=set(),goal=F)
+print(F.path_weight(),F.path_name())
