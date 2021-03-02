@@ -7,7 +7,7 @@ class TrieTree:
     def __repr__(self) -> str:
         return dumps(self.ROOT, indent=1)
 
-    def insert_word(self:dict,word:str) -> None:
+    def insert_word(self, word:str) -> None:
         current_node = self.ROOT
         for child_node in word.lower():
             if child_node not in current_node: 
@@ -15,7 +15,7 @@ class TrieTree:
             current_node = current_node.get(child_node)
         current_node[None] = {}
 
-    def word_in_tree(self,word:str) -> bool:
+    def word_in_tree(self, word:str) -> bool:
         current_node = self.ROOT
         for child_node in word.lower():
             current_node = current_node.get(child_node)            
