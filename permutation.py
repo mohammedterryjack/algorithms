@@ -51,14 +51,9 @@ def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
     BIT_VECTOR_SIZE = len(values)
     for permutation in BitVector("0"*BIT_VECTOR_SIZE):
         IS_INDEX_SELECTED = permutation.as_array()
-        yield set(
-            map(
-                lambda index:values[index],
-                filter(
-                    lambda index:IS_INDEX_SELECTED[index],
-                    range(BIT_VECTOR_SIZE)
-                )
-            )
-        )
+        indices = range(BIT_VECTOR_SIZE)
+        selected_indicies = filter(lambda index:IS_INDEX_SELECTED[index],indices)
+        selected_values = map(lambda index:values[index],selected_indicies)
+        yield set(selected_values)
 
 #print(list(get_all_permutations([10,11,12])))
