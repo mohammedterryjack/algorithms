@@ -53,7 +53,8 @@ def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
     bit_string = "0"*bit_vector_size
     bit_vector = BitVector(bit_string)
     for permutation in bit_vector:
-        selected_indicies = filter(lambda index:permutation.as_array()[index],indices)
+        is_index_selected = permutation.as_array()
+        selected_indicies = filter(lambda index:is_index_selected[index],indices)
         selected_values = map(lambda index:values[index],selected_indicies)
         yield set(selected_values)
 
