@@ -1,4 +1,4 @@
-from typing import Union, List
+from typing import Union, List, Iterator, Set
 
 class BitVector:
     def __init__(self, value:Union[str,int], length:int=10) -> None:
@@ -47,5 +47,18 @@ class BitVector:
     def convert_binary_string_to_int(binary_string:str) -> int:
         return int(binary_string,base=2)
 
-# for permutation in BitVector("000"):
-#     print(permutation, permutation.as_array())
+def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
+    BIT_VECTOR_SIZE = len(values)
+    for permutation in BitVector("0"*BIT_VECTOR_SIZE):
+        IS_INDEX_SELECTED = permutation.as_array()
+        yield set(
+            map(
+                lambda index:values[index],
+                filter(
+                    lambda index:IS_INDEX_SELECTED[index],
+                    range(BIT_VECTOR_SIZE)
+                )
+            )
+        )
+
+#print(list(get_all_permutations([10,11,12])))
