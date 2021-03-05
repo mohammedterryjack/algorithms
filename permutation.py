@@ -48,11 +48,12 @@ class BitVector:
         return int(binary_string,base=2)
 
 def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
-    BIT_VECTOR_SIZE = len(values)
-    for permutation in BitVector("0"*BIT_VECTOR_SIZE):
-        IS_INDEX_SELECTED = permutation.as_array()
-        indices = range(BIT_VECTOR_SIZE)
-        selected_indicies = filter(lambda index:IS_INDEX_SELECTED[index],indices)
+    bit_vector_size = len(values)
+    indices = range(bit_vector_size)
+    bit_string = "0"*bit_vector_size
+    bit_vector = BitVector(bit_string)
+    for permutation in bit_vector:
+        selected_indicies = filter(lambda index:permutation.as_array()[index],indices)
         selected_values = map(lambda index:values[index],selected_indicies)
         yield set(selected_values)
 
