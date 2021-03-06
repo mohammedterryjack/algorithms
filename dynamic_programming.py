@@ -30,6 +30,22 @@ def create_sum_with_values(target_sum:int, values:List[int],memory:Dict[str,Opti
 
 #print(create_sum_with_values(10,[19,7,44,3]))
 
+def create_word_with_substrings(target_word:str, substrings:List[str],memory:Dict[str,List[str]]={}) -> List[str]:
+    if not any(target_word): return []
+    if target_word not in memory:
+        prefix_combination = None
+        for prefix in substrings:
+            if target_word.startswith(prefix):
+                valid_prefixes = create_word_with_substrings(target_word.lstrip(prefix),substrings)
+                if valid_prefixes is not None:
+                    prefix_combination = valid_prefixes + [prefix]
+                    break 
+        memory[target_word] = prefix_combination
+    return memory[target_word]
+
+#print(create_word_with_substrings("abcdef",["abc","cd","def","cde"]))
+#print(create_word_with_substrings("skateboard",["bo","ate","sk","ska","boar","d"]))
+
 
 def create_sum_with_least_values(target_sum:int, values:List[int],memory:Dict[str,Optional[List[int]]]={}) -> Optional[List[int]]:
     if target_sum < 0: return  
