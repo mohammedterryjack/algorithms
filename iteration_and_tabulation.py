@@ -28,16 +28,18 @@ def create_sum_with_least_values(target_sum:int, values:List[int]) -> List[int]:
 
 def create_word_with_substrings(target_word:str, substrings:List[str]) -> List[str]:
     target_index = len(target_word)
-    mex_offset = len(max(substrings,key=len))
-    memory = [None]*(target_index + mex_offset)
+    max_offset = len(max(substrings,key=len))
+    target_word += " "*max_offset
+
+    memory = [None]*(target_index + max_offset)
     memory[0] = []
-    for index,character in enumerate(target_word):
+    for index in range(target_index):
         if memory[index] is not None:
             for substring in substrings:
-                if substring.startswith(character):
-                    memory[index + len(substring)] = memory[index] + [substring]
+                offset_index = index + len(substring)
+                if substring == target_word[index:offset_index]:
+                    memory[offset_index] = memory[index] + [substring]
     return memory[target_index]
-
 
 #print(create_word_with_substrings("abcdef",["abc","cd","def","cde"]))
 #print(create_word_with_substrings("skateboard",["bo","ate","sk","ska","boar","d"]))
