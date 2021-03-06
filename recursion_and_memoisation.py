@@ -1,22 +1,11 @@
 from typing import List,Dict, Optional
 
-def fibonacci_recursion(n:int, memory:dict={}) -> int:
+def fibonacci(n:int, memory:dict={}) -> int:
     if n <= 2: return 1
-    if n not in memory: memory[n] = fibonacci_recursion(n-1) + fibonacci_recursion(n-2)
+    if n not in memory: memory[n] = fibonacci(n-1) + fibonacci(n-2)
     return memory[n]
 
-#print(50,fibonacci_recursion(50))
-
-def fibonacci_iteration(n:int) -> int:
-    memory = [0]*(n+2)
-    memory[1] = 1
-    for index in range(n):
-        memory[index+1] += memory[index]
-        memory[index+2] += memory[index]
-    return memory[n]
-
-#print(50,fibonacci_iteration(50))
-
+#print(50,fibonacci(50))
 
 def grid_traveller(x:int,y:int,memory:Dict[str,int]={}) -> int:
     if x==0 or y==0: return 0
