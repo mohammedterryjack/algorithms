@@ -46,3 +46,5 @@ def create_sum_with_least_values(target_sum:int, values:List[int],memory:Dict[st
         memory[target_sum] = shortest_combination
     
     return memory[target_sum]
+
+#print(create_sum_with_least_values(111,[3,23,10]))
