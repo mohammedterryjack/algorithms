@@ -24,3 +24,20 @@ def create_sum_with_least_values(target_sum:int, values:List[int]) -> List[int]:
     return memory[target_sum]
 
 #print(create_sum_with_least_values(111,[3,23,10]))
+
+
+def create_word_with_substrings(target_word:str, substrings:List[str]) -> List[str]:
+    target_index = len(target_word)
+    mex_offset = len(max(substrings,key=len))
+    memory = [None]*(target_index + mex_offset)
+    memory[0] = []
+    for index,character in enumerate(target_word):
+        if memory[index] is not None:
+            for substring in substrings:
+                if substring.startswith(character):
+                    memory[index + len(substring)] = memory[index] + [substring]
+    return memory[target_index]
+
+
+#print(create_word_with_substrings("abcdef",["abc","cd","def","cde"]))
+#print(create_word_with_substrings("skateboard",["bo","ate","sk","ska","boar","d"]))
