@@ -29,3 +29,20 @@ def create_sum_with_values(target_sum:int, values:List[int],memory:Dict[str,Opti
     return memory[target_sum]
 
 #print(create_sum_with_values(10,[19,7,44,3]))
+
+
+def create_sum_with_least_values(target_sum:int, values:List[int],memory:Dict[str,Optional[List[int]]]={}) -> Optional[List[int]]:
+    if target_sum < 0: return  
+    if target_sum == 0: return []
+
+    if target_sum not in memory: 
+        shortest_combination = None
+        for value in values:
+            results = create_sum_with_least_values(target_sum-value,values)
+            if results is None: continue
+            combination = results + [value]
+            if shortest_combination is None or len(shortest_combination) > len(combination):
+                shortest_combination = combination
+        memory[target_sum] = shortest_combination
+    
+    return memory[target_sum]
