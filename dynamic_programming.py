@@ -1,4 +1,4 @@
-from typing import List,Dict
+from typing import List,Dict, Optional
 
 def fibonacci(n:int, memory:Dict[str,int]={}) -> int:
     if n <= 2: return 1
@@ -17,15 +17,15 @@ def grid_traveller(x:int,y:int,memory:Dict[str,int]={}) -> int:
 
 #print(grid_traveller(18,18))
 
-
-def is_sum_in_values(target_sum:int, values:List[int],memory:Dict[str,bool]={}) -> bool:
-    if target_sum < 0: return False 
-    if target_sum == 0: return True
+def create_sum_with_values(target_sum:int, values:List[int],memory:Dict[str,Optional[List[int]]]={}) -> Optional[List[int]]:
+    if target_sum < 0: return  
+    if target_sum == 0: return []
     for value in values:
-        if is_sum_in_values(target_sum-value,values): 
-            if target_sum not in memory: memory[target_sum] = True
+        results = create_sum_with_values(target_sum-value,values)
+        if results is not None:
+            if target_sum not in memory: memory[target_sum] = results + [value]
             return memory[target_sum]
-    if target_sum not in memory: memory[target_sum] = False
+    if target_sum not in memory: memory[target_sum] = None
     return memory[target_sum]
 
-#print(is_sum_in_values(10,[19,7,44,3]))
+#print(create_sum_with_values(10,[19,7,44,3]))
