@@ -47,7 +47,7 @@ class BitVector:
     def convert_binary_string_to_int(binary_string:str) -> int:
         return int(binary_string,base=2)
 
-def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
+def combinations(values:List[int]) -> Iterator[Set[int]]:
     bit_vector_size = len(values)
     indices = range(bit_vector_size)
     bit_string = "0"*bit_vector_size
@@ -58,4 +58,4 @@ def get_all_permutations(values:List[int]) -> Iterator[Set[int]]:
         selected_values = map(lambda index:values[index],selected_indicies)
         yield set(selected_values)
 
-#print(list(get_all_permutations([10,11,12])))
+#print(list(combinations([10,11,12])))
