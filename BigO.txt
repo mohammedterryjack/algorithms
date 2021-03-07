@@ -1,0 +1,6 @@
+O(c)        constant
+O(log(n))   logarithmic 
+O(n)        linear
+O(nlog(n))  loglinear
+O(n^c)      polynomial
+O(c^n)      exponential
