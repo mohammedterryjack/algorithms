@@ -4,3 +4,4 @@ O(n)        linear
 O(nlog(n))  loglinear
 O(n^c)      polynomial
 O(c^n)      exponential
+O(n!)       factorial
