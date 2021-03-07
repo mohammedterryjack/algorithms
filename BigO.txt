@@ -20,9 +20,10 @@ for value in values:                        # complexity        = O(n)
                         
 def recursive_function(values):             # SIMPLE RECURSION EXAMPLE 
   if not any(example): return               # complexity                 = O(c)
-  example.pop()                             # complexity                 = O(c)
+  value = example.pop()                     # complexity                 = O(c)
+  print(value)                              # complexity                 = O(c)
   recursive_function(example)               # maximum depth of recursion = n 
-                                            # function complexity        = O(c*c) = O(c)
+                                            # function complexity        = O(c*c*c) = O(c)
                                             # total complexity           = max tree breadth ^ max tree depth
                                             #                            = function complexity ^ maximum depth of recursion 
                                             #                            = O(c^n)
