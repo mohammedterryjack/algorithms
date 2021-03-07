@@ -13,12 +13,12 @@ O(n!)       factorial       [2,24,40320,2.092279e+13,   2.6313084e+35,          
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 values = [1,2,3...,n]
 
-                                            # SIMPLE ITERATION EXAMPLE
-for value in values:                        # complexity        = O(n)
-  print(value)                              # complexity        = O(c)
+def iterative_function(values):             
+  for value in values:                      # complexity        = O(n)
+    print(value)                            # complexity        = O(c)
                                             # total complexity  = O(n*c) = O(n) 
                         
-def recursive_function(values):             # SIMPLE RECURSION EXAMPLE 
+def recursive_function(values):            
   if not any(example): return               # complexity                 = O(c)
   value = example.pop()                     # complexity                 = O(c)
   print(value)                              # complexity                 = O(c)
