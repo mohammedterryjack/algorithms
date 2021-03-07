@@ -13,14 +13,15 @@ O(n!)       factorial       [2,24,40320,2.092279e+13,   2.6313084e+35,          
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 def factorial_iterative(n:int) -> int:             
-  result = 1                                # (base case)
+  result = 1                                # (base case)                           = O(c)
   for number in range(n):                   # for complexity                        = O(n)
     result *= number                        # * complexity                          = O(c)
-  return result                             # iterative_function() complexity       = O(n*c) = O(n) 
+  return result                             # iterative_function() complexity       = O(c*n*c) = O(n) 
                         
 def factorial_recursive(n:int) -> int:            
-  if n == 1: return 1                       # == complexity (base case)             = O(c)
-  return factorial_recursive(n-1)           # (maximum depth of recursion = n)
+  if n == 1:                                # == complexity                         = O(c)    
+    return 1                                # (base case)                           = O(c)
+  return n * factorial_recursive(n-1)       # * complexity                          = O(c)
                                             # recursive_function() complexity       = max tree breadth ^ max tree depth
-                                            #                                       = function complexity ^ maximum depth of recursion 
-                                            #                                       = O(c^n)
+                                            #                                       = complexity ^ maximum depth of recursion 
+                                            #                                       = O((c*c*c)^n) = O(c^n)
