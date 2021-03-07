@@ -8,3 +8,19 @@ O(nlog(n))  loglinear       [2, 8,   24,          64,             160,          
 O(n^c)      polynomial      [8,64,  512,        4096,           32768,                    68719476736..]
 O(c^n)      exponential     [9,81, 6561,    43046721,1853020188851841,3433683820292512484657849089281..]
 O(n!)       factorial       [2,24,40320,2.092279e+13,   2.6313084e+35,                  1.2688693e+89..]
+
+
++++++++++++++++++++++++++++++
+example = [1,2,3...,n]
+
+                        # SIMPLE ITERATION EXAMPLE
+for value in example:   # complexity        = O(n)
+  print(value)          # complexity        = O(c)
+                        # total complexity  = O(n*c) = O(n) 
+                        
+def recursive_function(example) -> None:    # SIMPLE RECURSION EXAMPLE 
+  if not any(example): return               # complexity                 = O(c)
+  example.pop()                             # complexity                 = O(c)
+  recursive_function(example)               # maximum depth of recursion = n 
+                                            # function complexity = O(c*c) = O(c)
+                                            # total complexity = function complexity ^ maximum depth of recursion = O(c^n)
