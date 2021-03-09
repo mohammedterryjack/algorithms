@@ -22,9 +22,8 @@ def breadth_first_search(queue:List[Node]) -> int:
     queue.extend(node.children)
     return node.value + breadth_first_search(queue)
 
-def simplified_breadth_first_search(node:Node) -> int:
-    if node is None: return 0
-    return node.value + sum(map(simplified_breadth_first_search,node.children))
+def simplified_bfs(node:Node) -> int:
+    return 0 if node is None else node.value + sum(map(simplified_bfs,node.children))
 
 # a = Node("a",1)
 # b = Node("b",2)
@@ -38,5 +37,5 @@ def simplified_breadth_first_search(node:Node) -> int:
 # a.children = [b,c]
 # print(depth_first_search([a]))
 # print(breadth_first_search([a]))
-# print(simplified_breadth_first_search(a))
+# print(simplified_bfs(a))
 
